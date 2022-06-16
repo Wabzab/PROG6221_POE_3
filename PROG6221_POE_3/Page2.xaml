@@ -9,6 +9,24 @@
       Title="Page2">
 
     <Grid>
-        <TextBlock Text="Page 2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+        <StackPanel x:Name="stckPnl" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0">
+            <TextBlock x:Name="txtP1" Text="Expense Details" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+            <Label Content="Enter expenses for the following fields:" FontSize="16" Margin="0,5,0,0"/>
+            
+            <Label Content="Groceries:" FontSize="14" Margin="0,2,0,0"/>
+            <local:NumberTextBox x:Name="Groceries" MinHeight="25" FontSize="14" LostFocus="SaveContent"/>
+
+            <Label Content="Water and Lights:" FontSize="14" Margin="0,2,0,0"/>
+            <local:NumberTextBox x:Name="Water_and_Lights" MinHeight="25" FontSize="14" LostFocus="SaveContent"/>
+
+            <Label Content="Travel Costs:" FontSize="14" Margin="0,2,0,0"/>
+            <local:NumberTextBox x:Name="Travel_Costs" MinHeight="25" FontSize="14" LostFocus="SaveContent"/>
+
+            <Label Content="Cell/Telephone:" FontSize="14" Margin="0,2,0,0"/>
+            <local:NumberTextBox x:Name="Cell_Telephone" MinHeight="25" FontSize="14" LostFocus="SaveContent"/>
+
+            <Label Content="Other:" FontSize="14" Margin="0,2,0,0"/>
+            <local:NumberTextBox x:Name="Other" MinHeight="25" FontSize="14" LostFocus="SaveContent"/>
+        </StackPanel>
     </Grid>
 </Page>

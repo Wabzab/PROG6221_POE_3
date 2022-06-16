@@ -9,8 +9,8 @@
     <Grid>
         <Frame Name="Main" Margin="0,0,0,40" NavigationUIVisibility="Hidden"/>
         <StackPanel Orientation="Horizontal" Height="40" VerticalAlignment="Bottom">
-            <Button Content="Back" Click="Button_Click" MinWidth="100"/>
-            <Button Content="Next" Click="Button_Click_1" MinWidth="100" Margin="93,0,0,0"/>
+            <Button x:Name="btnBack" Content="Back" Click="Button_Click" MinWidth="100"/>
+            <Button x:Name="btnNext" Content="Next" Click="Button_Click_1" MinWidth="100" Margin="93,0,0,0"/>
         </StackPanel>
     </Grid>
 </Window>

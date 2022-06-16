@@ -9,9 +9,14 @@
       Title="Page1">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock x:Name="txtP1" Text="Page 1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
-            <TextBox x:Name="input1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" MinHeight="20"/>
+        <StackPanel x:Name="stckPnl" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0">
+            <TextBlock x:Name="txtP1" Text="Income Details" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+            
+            <Label Content="Enter monthly income before tax:" FontSize="16" Margin="0,15,0,0"/>
+            <local:NumberTextBox x:Name="Income" MinHeight="25" FontSize="16" LostFocus="SaveContent"/>
+
+            <Label Content="Enter monthly tax on income:" FontSize="16" Margin="0,15,0,0"/>
+            <local:NumberTextBox x:Name="Tax" MinHeight="25" FontSize="16" LostFocus="SaveContent"/>
         </StackPanel>
         
     </Grid>

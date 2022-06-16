@@ -21,18 +21,19 @@ namespace PROG6221_POE_3
     public partial class MainWindow : Window
     {
         object[] pageURI;
-        int curPage = 0;
+        int curPage = 3;
 
-        public string words = "something";
+        private IDictionary<string, double> expenseValues = new Dictionary<string, double>();
 
         public MainWindow()
         {
             InitializeComponent();
-            pageURI = new object[] { new Page1(this), new Page2(this) };
+            pageURI = new object[] { new Page1(this), new Page2(this), new Page3(this), new Page4(this)};
             this.Loaded += (s, e) =>
             {
-                Main.Navigate(pageURI[0], UriKind.Relative);
+                Main.Navigate(pageURI[curPage], UriKind.Relative);
             };
+            btnNext.IsEnabled = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,6 +42,7 @@ namespace PROG6221_POE_3
             {
                 Main.GoBack();
                 curPage--;
+                btnNext.IsEnabled = true;
             }
         }
 
@@ -50,7 +52,34 @@ namespace PROG6221_POE_3
             {
                 curPage++;
                 Main.Navigate(pageURI[curPage], UriKind.Relative);
+                btnNext.IsEnabled = false;
             }
         }
+
+        public void ToggleNextButton(bool state)
+        {
+            btnNext.IsEnabled = state;
+        }
+
+        public void SaveExpense(string expenseName, double value)
+        {
+            if (expenseValues.ContainsKey(expenseName))
+            {
+                expenseValues[expenseName] = value;
+            }
+            else
+            {
+                expenseValues.Add(expenseName, value);
+            }
+        }
+
+        public void RemoveExpense(string expenseName)
+        {
+            if (expenseValues.ContainsKey(expenseName))
+            {
+                expenseValues.Remove(expenseName);
+            }
+        }
+
     }
 }
