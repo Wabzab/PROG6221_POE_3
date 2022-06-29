@@ -9,9 +9,10 @@ using System.Windows.Media;
 
 namespace PROG6221_POE_3
 {
+    // Utility functions
     class Utilities
     {
-        
+        // These functions in conjunction return a list of all the children nodes of the parent node specified
         private List<object> lstChildren;
 
         public List<object> GetChildren(Visual p_vParent, int p_nLevel)

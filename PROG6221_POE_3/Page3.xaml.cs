@@ -21,7 +21,7 @@ namespace PROG6221_POE_3
     /// </summary>
     public partial class Page3 : Page
     {
-
+        // Logic for storing instanced objects and filling them out in the constructor
         MainWindow main;
         Utilities util = new Utilities();
         List<object> childrenRent;
@@ -35,6 +35,8 @@ namespace PROG6221_POE_3
             childrenBuy = util.GetChildren(gridBuy, 1);
         }
 
+        // Saves the content of each field entered with variance on which text fields to check
+        // Enables the next button if all necessary fields are filled out
         private void SaveContent(object sender, RoutedEventArgs e)
         {
             NumberTextBox textbox = ((NumberTextBox)sender);
@@ -67,6 +69,7 @@ namespace PROG6221_POE_3
             main.btnNext.IsEnabled = true;
         }
 
+        // Function for calculating the home loan details based on entered data
         private void CalculateHomeLoan(object sender, RoutedEventArgs e)
         {
             foreach (object child in childrenBuy)
@@ -97,6 +100,7 @@ namespace PROG6221_POE_3
             main.SaveExpense("Homeloan", homeLoan);
         }
 
+        // Logic for the 'rent' button being unchecked
         private void HandleRentUnchecked(object sender, RoutedEventArgs e)
         {
             main.btnNext.IsEnabled = false;
@@ -110,6 +114,7 @@ namespace PROG6221_POE_3
             }
         }
 
+        // Logic for the 'buy' button being unchecked
         private void HandleBuyUnchecked(object sender, RoutedEventArgs e)
         {
             main.btnNext.IsEnabled = false;

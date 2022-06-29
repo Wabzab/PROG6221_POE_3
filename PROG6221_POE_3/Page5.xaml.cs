@@ -11,33 +11,30 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Globalization;
 using System.Windows.Shapes;
+using System.Globalization;
 
 namespace PROG6221_POE_3
 {
     /// <summary>
-    /// Interaction logic for Page4.xaml
+    /// Interaction logic for Page5.xaml
     /// </summary>
-    public partial class Page4 : Page
+    public partial class Page5 : Page
     {
         // Logic for storing instanced objects and filling them out in the constructor
         MainWindow main;
         Utilities util = new Utilities();
         List<object> children;
 
-        // Default name for the vehicle expense
-        string vehicelMakeModel = "Vehicle Loan";
-
-        public Page4(MainWindow mainIn)
+        public Page5(MainWindow mainIn)
         {
             InitializeComponent();
             main = mainIn;
-            children = util.GetChildren(vehicleDeats, 1);
+            children = util.GetChildren(savingDeats, 1);
         }
 
-        // Calculates the details of getting a loan for a vehicle based on user data
-        private void CalculateVehicleLoan(object sender, RoutedEventArgs e)
+        // Calculate the amount of money to save each month to reach the specified goal in the specified time
+        private void CalculateMonthlySaving(object sender, RoutedEventArgs e)
         {
             foreach (object child in children)
             {
@@ -53,33 +50,24 @@ namespace PROG6221_POE_3
             }
             main.btnNext.IsEnabled = true;
 
-            double BaseValue = double.Parse(baseValue.Text, NumberStyles.Any, CultureInfo.InvariantCulture);
-            double Deposit = double.Parse(deposit.Text, NumberStyles.Any, CultureInfo.InvariantCulture);
+            double BaseValue = double.Parse(saving.Text, NumberStyles.Any, CultureInfo.InvariantCulture);
+            double Time = double.Parse(months.Text, NumberStyles.Any, CultureInfo.InvariantCulture);
             double Interest = double.Parse(interest.Text, NumberStyles.Any, CultureInfo.InvariantCulture);
-            double Premium = double.Parse(premium.Text, NumberStyles.Any, CultureInfo.InvariantCulture);
 
-            double P = BaseValue - (BaseValue * (Deposit / 100.0));
+            double P = BaseValue;
             double i = Interest / 100.0;
-            double n = 60 / 12;
+            double n = Time;
             double A = P * (1 + (i * n));
 
-            double vehicleLoan = A / 60;
-            double insurance = Premium / 60;
-            main.SaveExpense(vehicelMakeModel, vehicleLoan + insurance);
-        }
-
-        // Updates the vehicle expense name to whatever the make model is
-        private void SaveMakeModel(object sender, RoutedEventArgs e)
-        {
-            TextBox textbox = (TextBox)sender;
-            vehicelMakeModel = textbox.Text;
+            double monthlySavings = A / Time;
+            main.SaveExpense("Savings", monthlySavings);
         }
 
         // Logic for 'Yes' button being unchecked
         private void HandleYesUnchecked(object sender, RoutedEventArgs e)
         {
             main.btnNext.IsEnabled = true;
-            main.RemoveExpense(vehicelMakeModel);
+            main.RemoveExpense("Savings");
 
         }
 

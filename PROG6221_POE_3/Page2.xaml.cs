@@ -21,7 +21,7 @@ namespace PROG6221_POE_3
     /// </summary>
     public partial class Page2 : Page
     {
-
+        // Logic for storing instanced objects and filling them out in the constructor
         MainWindow main;
         Utilities util = new Utilities();
         List<object> children;
@@ -33,6 +33,7 @@ namespace PROG6221_POE_3
             children = util.GetChildren(stckPnl, 1);
         }
 
+        // Function for checking that each field is filled out before allowing the next button
         private void SaveContent(object sender, RoutedEventArgs e)
         {
             NumberTextBox textbox = ((NumberTextBox)sender);
